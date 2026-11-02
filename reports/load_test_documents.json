@@ -1,0 +1,21 @@
+[
+  {
+    "scenario": "batching_on",
+    "endpoint": "documents",
+    "requests": 200,
+    "concurrency": 4,
+    "wall_s": 331.02,
+    "throughput_rps": 0.6,
+    "success_rate": 1.0,
+    "status_codes": {
+      "200": 200
+    },
+    "p50_ms": 5855.8,
+    "p95_ms": 12641.0,
+    "p99_ms": 15713.7,
+    "mean_ms": 6588.3,
+    "server_inference_calls": 199,
+    "server_mean_batch_size": 1.01,
+    "server_rejected_overloaded": 0
+  }
+]

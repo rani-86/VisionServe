@@ -1,0 +1,55 @@
+groups:
+  - name: docserve
+    rules:
+      - record: docserve:http_p95_seconds:5m
+        expr: histogram_quantile(0.95, sum by (le, route) (rate(docserve_http_request_seconds_bucket[5m])))
+
+      - record: docserve:error_ratio:5m
+        expr: |
+          sum(rate(docserve_http_requests_total{status=~"5.."}[5m]))
+            / clamp_min(sum(rate(docserve_http_requests_total[5m])), 1e-9)
+
+      - alert: DocServeHighLatency
+        expr: docserve:http_p95_seconds:5m{route="/v1/documents"} > 4
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "p95 latency of /v1/documents above 4s"
+
+      - alert: DocServeHighErrorRate
+        expr: docserve:error_ratio:5m > 0.02
+        for: 5m
+        labels: {severity: critical}
+        annotations:
+          summary: "More than 2% of requests are failing with 5xx"
+
+      - alert: DocServeLoadShedding
+        expr: rate(docserve_rejected_total{reason="overloaded"}[5m]) > 0
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "Requests are being rejected at capacity; scale out or raise MAX_PENDING"
+
+      - alert: DocServeJobBacklog
+        expr: docserve_job_queue_depth > 200
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Redis job queue is backing up; add workers"
+
+      - alert: DocServeLowOCRConfidence
+        # Quality drift: share of documents whose mean OCR line confidence is below 0.85.
+        expr: |
+          sum by (doc_type) (rate(docserve_ocr_line_confidence_bucket{le="0.85"}[1h]))
+            / clamp_min(sum by (doc_type) (rate(docserve_ocr_line_confidence_count[1h])), 1e-9) > 0.2
+        for: 30m
+        labels: {severity: warning}
+        annotations:
+          summary: "OCR confidence degraded for {{ $labels.doc_type }} documents"
+
+      - alert: DocServeMissingFields
+        expr: sum by (doc_type, field) (rate(docserve_fields_missing_total[1h])) > 0.05
+        for: 30m
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.field }} frequently missing on {{ $labels.doc_type }}"

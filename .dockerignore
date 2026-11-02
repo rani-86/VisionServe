@@ -1,0 +1,11 @@
+.venv
+data
+scratch
+storage
+reports
+tests
+.pytest_cache
+**/__pycache__
+models/**/hf
+models/**/*.prep.onnx
+*.md

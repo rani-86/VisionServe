@@ -1,0 +1,17 @@
+# Runtime dependencies of the inference service and worker (no PyTorch: models are served from ONNX).
+numpy>=1.26
+opencv-python-headless>=4.10
+pillow>=10.0
+onnxruntime>=1.18          # swap for onnxruntime-gpu on CUDA hosts
+paddlepaddle>=3.0
+paddleocr>=3.0
+rapidocr>=3.4              # PP-OCRv5 ONNX models + DB/CTC post-processing on ONNX Runtime
+pytesseract>=0.3.10        # needs the tesseract binary (installed in the Docker image)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+rapidfuzz>=3.9            # fuzzy label matching, CER/WER
+redis>=5.0
+prometheus-client>=0.20
+boto3>=1.34

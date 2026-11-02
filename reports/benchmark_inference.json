@@ -1,0 +1,267 @@
+{
+  "model_version": "v2",
+  "host": {
+    "cpu": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "cores": 12,
+    "os": "Windows-11-10.0.26300-SP0",
+    "onnxruntime": "1.31.1",
+    "torch": "2.15.0+cpu",
+    "providers": [
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "configs": [
+    {
+      "config": "pytorch_eager",
+      "model_load_mb": 380.0,
+      "peak_rss_mb": 672.3,
+      "results": [
+        {
+          "batch_size": 1,
+          "iterations": 256,
+          "images": 256,
+          "p50_ms": 23.84,
+          "p95_ms": 29.68,
+          "per_image_ms": 23.84,
+          "throughput_ips": 40.7
+        },
+        {
+          "batch_size": 2,
+          "iterations": 128,
+          "images": 256,
+          "p50_ms": 37.58,
+          "p95_ms": 41.93,
+          "per_image_ms": 18.79,
+          "throughput_ips": 52.8
+        },
+        {
+          "batch_size": 4,
+          "iterations": 64,
+          "images": 256,
+          "p50_ms": 70.38,
+          "p95_ms": 76.79,
+          "per_image_ms": 17.6,
+          "throughput_ips": 56.6
+        },
+        {
+          "batch_size": 8,
+          "iterations": 32,
+          "images": 256,
+          "p50_ms": 148.94,
+          "p95_ms": 155.98,
+          "per_image_ms": 18.62,
+          "throughput_ips": 53.6
+        },
+        {
+          "batch_size": 16,
+          "iterations": 16,
+          "images": 256,
+          "p50_ms": 319.35,
+          "p95_ms": 336.77,
+          "per_image_ms": 19.96,
+          "throughput_ips": 49.7
+        },
+        {
+          "batch_size": 32,
+          "iterations": 8,
+          "images": 256,
+          "p50_ms": 664.85,
+          "p95_ms": 692.6,
+          "per_image_ms": 20.78,
+          "throughput_ips": 48.4
+        }
+      ]
+    },
+    {
+      "config": "onnx_fp32_noopt",
+      "model_load_mb": 83.2,
+      "peak_rss_mb": 396.9,
+      "results": [
+        {
+          "batch_size": 1,
+          "iterations": 256,
+          "images": 256,
+          "p50_ms": 15.06,
+          "p95_ms": 16.99,
+          "per_image_ms": 15.06,
+          "throughput_ips": 70.0
+        },
+        {
+          "batch_size": 2,
+          "iterations": 128,
+          "images": 256,
+          "p50_ms": 41.61,
+          "p95_ms": 47.92,
+          "per_image_ms": 20.8,
+          "throughput_ips": 47.4
+        },
+        {
+          "batch_size": 4,
+          "iterations": 64,
+          "images": 256,
+          "p50_ms": 71.16,
+          "p95_ms": 78.65,
+          "per_image_ms": 17.79,
+          "throughput_ips": 56.5
+        },
+        {
+          "batch_size": 8,
+          "iterations": 32,
+          "images": 256,
+          "p50_ms": 138.64,
+          "p95_ms": 143.45,
+          "per_image_ms": 17.33,
+          "throughput_ips": 58.5
+        },
+        {
+          "batch_size": 16,
+          "iterations": 16,
+          "images": 256,
+          "p50_ms": 265.84,
+          "p95_ms": 274.85,
+          "per_image_ms": 16.62,
+          "throughput_ips": 60.2
+        },
+        {
+          "batch_size": 32,
+          "iterations": 8,
+          "images": 256,
+          "p50_ms": 525.72,
+          "p95_ms": 537.05,
+          "per_image_ms": 16.43,
+          "throughput_ips": 61.0
+        }
+      ]
+    },
+    {
+      "config": "onnx_fp32_opt",
+      "model_load_mb": 148.6,
+      "peak_rss_mb": 396.8,
+      "results": [
+        {
+          "batch_size": 1,
+          "iterations": 256,
+          "images": 256,
+          "p50_ms": 10.13,
+          "p95_ms": 11.99,
+          "per_image_ms": 10.13,
+          "throughput_ips": 105.2
+        },
+        {
+          "batch_size": 2,
+          "iterations": 128,
+          "images": 256,
+          "p50_ms": 21.63,
+          "p95_ms": 23.27,
+          "per_image_ms": 10.81,
+          "throughput_ips": 92.5
+        },
+        {
+          "batch_size": 4,
+          "iterations": 64,
+          "images": 256,
+          "p50_ms": 42.86,
+          "p95_ms": 44.84,
+          "per_image_ms": 10.71,
+          "throughput_ips": 94.0
+        },
+        {
+          "batch_size": 8,
+          "iterations": 32,
+          "images": 256,
+          "p50_ms": 84.17,
+          "p95_ms": 89.73,
+          "per_image_ms": 10.52,
+          "throughput_ips": 94.3
+        },
+        {
+          "batch_size": 16,
+          "iterations": 16,
+          "images": 256,
+          "p50_ms": 164.76,
+          "p95_ms": 174.18,
+          "per_image_ms": 10.3,
+          "throughput_ips": 96.0
+        },
+        {
+          "batch_size": 32,
+          "iterations": 8,
+          "images": 256,
+          "p50_ms": 337.03,
+          "p95_ms": 343.13,
+          "per_image_ms": 10.53,
+          "throughput_ips": 95.6
+        }
+      ]
+    },
+    {
+      "config": "onnx_int8",
+      "model_load_mb": 44.4,
+      "peak_rss_mb": 183.5,
+      "results": [
+        {
+          "batch_size": 1,
+          "iterations": 256,
+          "images": 256,
+          "p50_ms": 2.93,
+          "p95_ms": 3.46,
+          "per_image_ms": 2.93,
+          "throughput_ips": 330.3
+        },
+        {
+          "batch_size": 2,
+          "iterations": 128,
+          "images": 256,
+          "p50_ms": 5.43,
+          "p95_ms": 6.45,
+          "per_image_ms": 2.72,
+          "throughput_ips": 369.4
+        },
+        {
+          "batch_size": 4,
+          "iterations": 64,
+          "images": 256,
+          "p50_ms": 9.9,
+          "p95_ms": 11.45,
+          "per_image_ms": 2.48,
+          "throughput_ips": 406.6
+        },
+        {
+          "batch_size": 8,
+          "iterations": 32,
+          "images": 256,
+          "p50_ms": 17.86,
+          "p95_ms": 26.75,
+          "per_image_ms": 2.23,
+          "throughput_ips": 408.7
+        },
+        {
+          "batch_size": 16,
+          "iterations": 16,
+          "images": 256,
+          "p50_ms": 48.71,
+          "p95_ms": 57.39,
+          "per_image_ms": 3.04,
+          "throughput_ips": 322.7
+        },
+        {
+          "batch_size": 32,
+          "iterations": 8,
+          "images": 256,
+          "p50_ms": 93.87,
+          "p95_ms": 103.62,
+          "per_image_ms": 2.93,
+          "throughput_ips": 337.8
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Batch 1: ONNX Runtime (optimised) p50 10.13 ms vs PyTorch 23.84 ms (2.35x faster)",
+    "Batch 32: ONNX Runtime (optimised) p50 337.03 ms vs PyTorch 664.85 ms (1.97x faster)",
+    "Graph optimisations at batch 1: 15.06 -> 10.13 ms",
+    "INT8 vs FP32 at batch 32: 337.8 vs 95.6 img/s",
+    "Batching (ONNX FP32): throughput 105.2 img/s at batch 1 -> 95.6 img/s at batch 32, while p50 latency rises 10.13 -> 337.03 ms"
+  ]
+}

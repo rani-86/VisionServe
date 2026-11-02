@@ -1,0 +1,41 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--maxmemory", "512mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+
+  api:
+    build: .
+    image: docserve:latest
+    ports: ["8000:8000"]
+    environment:
+      DOCSERVE_REDIS_URL: redis://redis:6379/0
+      DOCSERVE_OCR_ENGINE: paddle_onnx
+      DOCSERVE_MODEL_VARIANT: fp32
+      DOCSERVE_MAX_CONCURRENCY: "4"
+      DOCSERVE_MAX_PENDING: "64"
+      DOCSERVE_BATCH_MAX_SIZE: "16"
+      DOCSERVE_BATCH_MAX_WAIT_MS: "8"
+    depends_on:
+      redis: {condition: service_healthy}
+
+  worker:
+    image: docserve:latest
+    command: ["python", "-m", "docserve.worker", "--metrics-port", "9101"]
+    environment:
+      DOCSERVE_REDIS_URL: redis://redis:6379/0
+      DOCSERVE_OCR_ENGINE: paddle_onnx
+      DOCSERVE_WORKER_BATCH_SIZE: "8"
+    depends_on:
+      redis: {condition: service_healthy}
+      api: {condition: service_started}
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    volumes:
+      - ./deploy/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports: ["9090:9090"]
+    depends_on: [api, worker]

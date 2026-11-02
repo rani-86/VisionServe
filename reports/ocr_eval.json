@@ -1,0 +1,418 @@
+{
+  "split": "holdout",
+  "documents": 150,
+  "engines_skipped": [
+    "tesseract"
+  ],
+  "results": {
+    "paddle_onnx_raw": {
+      "overall": {
+        "documents": 150,
+        "cer": 0.1157,
+        "wer": 0.167,
+        "field_accuracy": 0.9733,
+        "fields": 450,
+        "ocr_ms_p50": 1817.6,
+        "preprocess_ms_p50": 1.0
+      },
+      "by_doc_type": {
+        "bank_statement": {
+          "documents": 30,
+          "cer": 0.1938,
+          "wer": 0.2719,
+          "field_accuracy": 0.9889,
+          "fields": 90,
+          "ocr_ms_p50": 3383.5,
+          "preprocess_ms_p50": 0.9
+        },
+        "id_card": {
+          "documents": 30,
+          "cer": 0.017,
+          "wer": 0.0301,
+          "field_accuracy": 1.0,
+          "fields": 90,
+          "ocr_ms_p50": 1245.0,
+          "preprocess_ms_p50": 1.0
+        },
+        "invoice": {
+          "documents": 30,
+          "cer": 0.1624,
+          "wer": 0.2308,
+          "field_accuracy": 0.9889,
+          "fields": 90,
+          "ocr_ms_p50": 2306.6,
+          "preprocess_ms_p50": 1.2
+        },
+        "payslip": {
+          "documents": 30,
+          "cer": 0.1583,
+          "wer": 0.1925,
+          "field_accuracy": 0.9778,
+          "fields": 90,
+          "ocr_ms_p50": 1851.8,
+          "preprocess_ms_p50": 1.0
+        },
+        "receipt": {
+          "documents": 30,
+          "cer": 0.0472,
+          "wer": 0.11,
+          "field_accuracy": 0.9111,
+          "fields": 90,
+          "ocr_ms_p50": 1426.3,
+          "preprocess_ms_p50": 1.1
+        }
+      },
+      "by_capture": {
+        "scan": {
+          "documents": 96,
+          "cer": 0.122,
+          "wer": 0.1669,
+          "field_accuracy": 0.9931,
+          "fields": 288,
+          "ocr_ms_p50": 1781.4,
+          "preprocess_ms_p50": 1.0
+        },
+        "photo": {
+          "documents": 54,
+          "cer": 0.1046,
+          "wer": 0.1673,
+          "field_accuracy": 0.9383,
+          "fields": 162,
+          "ocr_ms_p50": 1828.2,
+          "preprocess_ms_p50": 1.1
+        }
+      }
+    },
+    "paddle_onnx+preprocess": {
+      "overall": {
+        "documents": 150,
+        "cer": 0.0075,
+        "wer": 0.031,
+        "field_accuracy": 0.9756,
+        "fields": 450,
+        "ocr_ms_p50": 1554.7,
+        "preprocess_ms_p50": 28.6
+      },
+      "by_doc_type": {
+        "bank_statement": {
+          "documents": 30,
+          "cer": 0.0049,
+          "wer": 0.0458,
+          "field_accuracy": 0.9667,
+          "fields": 90,
+          "ocr_ms_p50": 3306.7,
+          "preprocess_ms_p50": 30.7
+        },
+        "id_card": {
+          "documents": 30,
+          "cer": 0.0097,
+          "wer": 0.022,
+          "field_accuracy": 1.0,
+          "fields": 90,
+          "ocr_ms_p50": 673.8,
+          "preprocess_ms_p50": 30.2
+        },
+        "invoice": {
+          "documents": 30,
+          "cer": 0.0049,
+          "wer": 0.018,
+          "field_accuracy": 0.9889,
+          "fields": 90,
+          "ocr_ms_p50": 1972.7,
+          "preprocess_ms_p50": 27.4
+        },
+        "payslip": {
+          "documents": 30,
+          "cer": 0.0013,
+          "wer": 0.0129,
+          "field_accuracy": 1.0,
+          "fields": 90,
+          "ocr_ms_p50": 1715.1,
+          "preprocess_ms_p50": 30.1
+        },
+        "receipt": {
+          "documents": 30,
+          "cer": 0.0169,
+          "wer": 0.0565,
+          "field_accuracy": 0.9222,
+          "fields": 90,
+          "ocr_ms_p50": 1022.6,
+          "preprocess_ms_p50": 26.4
+        }
+      },
+      "by_capture": {
+        "scan": {
+          "documents": 96,
+          "cer": 0.0053,
+          "wer": 0.0278,
+          "field_accuracy": 0.9861,
+          "fields": 288,
+          "ocr_ms_p50": 1566.0,
+          "preprocess_ms_p50": 29.1
+        },
+        "photo": {
+          "documents": 54,
+          "cer": 0.0115,
+          "wer": 0.0369,
+          "field_accuracy": 0.9568,
+          "fields": 162,
+          "ocr_ms_p50": 1552.6,
+          "preprocess_ms_p50": 27.0
+        }
+      }
+    }
+  },
+  "worst_pages": {
+    "paddle_onnx_raw": [
+      {
+        "path": "payslip/payslip_0009.jpg",
+        "doc_type": "payslip",
+        "capture": "photo",
+        "cer": 0.4725274725274725,
+        "misses": {
+          "pay_period": {
+            "expected": "November 2026",
+            "got": null
+          }
+        }
+      },
+      {
+        "path": "payslip/payslip_0028.jpg",
+        "doc_type": "payslip",
+        "capture": "scan",
+        "cer": 0.44412607449856734,
+        "misses": {}
+      },
+      {
+        "path": "payslip/payslip_0018.jpg",
+        "doc_type": "payslip",
+        "capture": "scan",
+        "cer": 0.43526170798898073,
+        "misses": {}
+      },
+      {
+        "path": "bank_statement/bank_statement_0012.jpg",
+        "doc_type": "bank_statement",
+        "capture": "scan",
+        "cer": 0.4310077519379845,
+        "misses": {}
+      },
+      {
+        "path": "bank_statement/bank_statement_0003.jpg",
+        "doc_type": "bank_statement",
+        "capture": "scan",
+        "cer": 0.4254473161033797,
+        "misses": {}
+      }
+    ],
+    "paddle_onnx+preprocess": [
+      {
+        "path": "receipt/receipt_0027.jpg",
+        "doc_type": "receipt",
+        "capture": "photo",
+        "cer": 0.15447154471544716,
+        "misses": {
+          "receipt_number": {
+            "expected": "321632",
+            "got": null
+          }
+        }
+      },
+      {
+        "path": "receipt/receipt_0020.jpg",
+        "doc_type": "receipt",
+        "capture": "photo",
+        "cer": 0.099601593625498,
+        "misses": {}
+      },
+      {
+        "path": "invoice/invoice_0002.jpg",
+        "doc_type": "invoice",
+        "capture": "photo",
+        "cer": 0.08970976253298153,
+        "misses": {}
+      },
+      {
+        "path": "id_card/id_card_0020.jpg",
+        "doc_type": "id_card",
+        "capture": "scan",
+        "cer": 0.08823529411764706,
+        "misses": {}
+      },
+      {
+        "path": "id_card/id_card_0022.jpg",
+        "doc_type": "id_card",
+        "capture": "scan",
+        "cer": 0.08661417322834646,
+        "misses": {}
+      }
+    ]
+  },
+  "field_misses": {
+    "paddle_onnx_raw": [
+      {
+        "path": "bank_statement/bank_statement_0000.jpg",
+        "capture": "photo",
+        "field": "ifsc",
+        "expected": "FGLO0316749",
+        "got": null
+      },
+      {
+        "path": "invoice/invoice_0006.jpg",
+        "capture": "scan",
+        "field": "invoice_number",
+        "expected": "INV-97997",
+        "got": null
+      },
+      {
+        "path": "payslip/payslip_0006.jpg",
+        "capture": "photo",
+        "field": "employee_id",
+        "expected": "EMP6521",
+        "got": null
+      },
+      {
+        "path": "payslip/payslip_0009.jpg",
+        "capture": "photo",
+        "field": "pay_period",
+        "expected": "November 2026",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0003.jpg",
+        "capture": "scan",
+        "field": "receipt_number",
+        "expected": "119759",
+        "got": "111975"
+      },
+      {
+        "path": "receipt/receipt_0026.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "807757",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0026.jpg",
+        "capture": "photo",
+        "field": "date",
+        "expected": "23/02/2023",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0004.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "912038",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0004.jpg",
+        "capture": "photo",
+        "field": "date",
+        "expected": "02/06/2025",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0027.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "321632",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0027.jpg",
+        "capture": "photo",
+        "field": "date",
+        "expected": "09/08/2026",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0017.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "839176",
+        "got": null
+      }
+    ],
+    "paddle_onnx+preprocess": [
+      {
+        "path": "bank_statement/bank_statement_0023.jpg",
+        "capture": "scan",
+        "field": "ifsc",
+        "expected": "HLOX0249649",
+        "got": null
+      },
+      {
+        "path": "bank_statement/bank_statement_0000.jpg",
+        "capture": "photo",
+        "field": "ifsc",
+        "expected": "FGLO0316749",
+        "got": null
+      },
+      {
+        "path": "bank_statement/bank_statement_0003.jpg",
+        "capture": "scan",
+        "field": "closing_balance",
+        "expected": "127,592.36",
+        "got": null
+      },
+      {
+        "path": "invoice/invoice_0014.jpg",
+        "capture": "scan",
+        "field": "invoice_number",
+        "expected": "INV-44206",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0002.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "816260",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0010.jpg",
+        "capture": "scan",
+        "field": "date",
+        "expected": "24/12/2025",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0019.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "943428",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0026.jpg",
+        "capture": "photo",
+        "field": "date",
+        "expected": "23/02/2023",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0004.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "912038",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0004.jpg",
+        "capture": "photo",
+        "field": "date",
+        "expected": "02/06/2025",
+        "got": null
+      },
+      {
+        "path": "receipt/receipt_0027.jpg",
+        "capture": "photo",
+        "field": "receipt_number",
+        "expected": "321632",
+        "got": null
+      }
+    ]
+  }
+}

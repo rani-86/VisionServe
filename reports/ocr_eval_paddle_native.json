@@ -1,0 +1,140 @@
+{
+  "split": "val",
+  "documents": 20,
+  "engines_skipped": [],
+  "results": {
+    "paddle+preprocess": {
+      "overall": {
+        "documents": 20,
+        "cer": 0.0068,
+        "wer": 0.0569,
+        "field_accuracy": 0.9833,
+        "fields": 60,
+        "ocr_ms_p50": 5407.8,
+        "preprocess_ms_p50": 56.0
+      },
+      "by_doc_type": {
+        "bank_statement": {
+          "documents": 4,
+          "cer": 0.0027,
+          "wer": 0.0301,
+          "field_accuracy": 1.0,
+          "fields": 12,
+          "ocr_ms_p50": 10727.8,
+          "preprocess_ms_p50": 57.8
+        },
+        "id_card": {
+          "documents": 4,
+          "cer": 0.0042,
+          "wer": 0.0667,
+          "field_accuracy": 1.0,
+          "fields": 12,
+          "ocr_ms_p50": 2424.4,
+          "preprocess_ms_p50": 53.8
+        },
+        "invoice": {
+          "documents": 4,
+          "cer": 0.0081,
+          "wer": 0.0528,
+          "field_accuracy": 1.0,
+          "fields": 12,
+          "ocr_ms_p50": 6476.1,
+          "preprocess_ms_p50": 56.1
+        },
+        "payslip": {
+          "documents": 4,
+          "cer": 0.0,
+          "wer": 0.0,
+          "field_accuracy": 1.0,
+          "fields": 12,
+          "ocr_ms_p50": 5555.3,
+          "preprocess_ms_p50": 56.2
+        },
+        "receipt": {
+          "documents": 4,
+          "cer": 0.0191,
+          "wer": 0.1352,
+          "field_accuracy": 0.9167,
+          "fields": 12,
+          "ocr_ms_p50": 3676.5,
+          "preprocess_ms_p50": 56.1
+        }
+      },
+      "by_capture": {
+        "scan": {
+          "documents": 15,
+          "cer": 0.0083,
+          "wer": 0.0676,
+          "field_accuracy": 0.9778,
+          "fields": 45,
+          "ocr_ms_p50": 4468.1,
+          "preprocess_ms_p50": 56.6
+        },
+        "photo": {
+          "documents": 5,
+          "cer": 0.0024,
+          "wer": 0.025,
+          "field_accuracy": 1.0,
+          "fields": 15,
+          "ocr_ms_p50": 5642.8,
+          "preprocess_ms_p50": 53.4
+        }
+      }
+    }
+  },
+  "worst_pages": {
+    "paddle+preprocess": [
+      {
+        "path": "receipt/receipt_0039.jpg",
+        "doc_type": "receipt",
+        "capture": "scan",
+        "cer": 0.03550295857988166,
+        "misses": {}
+      },
+      {
+        "path": "receipt/receipt_0038.jpg",
+        "doc_type": "receipt",
+        "capture": "scan",
+        "cer": 0.022123893805309734,
+        "misses": {
+          "receipt_number": {
+            "expected": "696842",
+            "got": null
+          }
+        }
+      },
+      {
+        "path": "invoice/invoice_0037.jpg",
+        "doc_type": "invoice",
+        "capture": "scan",
+        "cer": 0.02112676056338028,
+        "misses": {}
+      },
+      {
+        "path": "receipt/receipt_0016.jpg",
+        "doc_type": "receipt",
+        "capture": "scan",
+        "cer": 0.018957345971563982,
+        "misses": {}
+      },
+      {
+        "path": "bank_statement/bank_statement_0016.jpg",
+        "doc_type": "bank_statement",
+        "capture": "photo",
+        "cer": 0.008741258741258742,
+        "misses": {}
+      }
+    ]
+  },
+  "field_misses": {
+    "paddle+preprocess": [
+      {
+        "path": "receipt/receipt_0038.jpg",
+        "capture": "scan",
+        "field": "receipt_number",
+        "expected": "696842",
+        "got": null
+      }
+    ]
+  }
+}
