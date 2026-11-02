@@ -1,4 +1,4 @@
-# DocServe — OCR & Document AI Inference Platform
+# VisionServe — OCR & Document AI Inference Platform
 
 **Tech stack:** Python · PyTorch · Hugging Face Transformers · OpenCV · PaddleOCR (PP-OCRv5) · Tesseract ·
 ONNX / ONNX Runtime · FastAPI · Docker · Redis · Prometheus · AWS (S3, ECR)
